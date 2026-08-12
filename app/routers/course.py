@@ -3,14 +3,19 @@ from sqlmodel import Session, select
 from app.database import get_session
 from app.models.course import Course
 from app.routers.auth import get_current_user
-
+from app.seed.run_seed import run_seed
 
 router = APIRouter(prefix="/courses",tags=["Courses"])
 
 # 1. Get all courses
 @router.get("/")
 def get_courses(session: Session = Depends(get_session)):
-    return session.exec(select(Course)).all()
+    course =  session.exec(select(Course)).all()
+    
+    if len(course) == 0:
+        run_seed()
+        destination =  session.exec(select(Course)).all()
+    return destination
 
 
 # 2. Create course

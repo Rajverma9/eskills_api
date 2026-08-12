@@ -3,7 +3,6 @@ from sqlmodel import SQLModel
 from sqlalchemy.exc import OperationalError
 from app.database import engine, create_db_and_tables
 from app.routers import course,auth
-from app.seed.run_seed import run_seed
 
 app = FastAPI(title="Course Management API",)
 
@@ -16,7 +15,7 @@ def startup():
 
     except OperationalError as e:
         print("Database Connection Failed:", e)
-        run_seed()
+        
 
 
 app.include_router(course.router)
