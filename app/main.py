@@ -4,6 +4,7 @@ from sqlalchemy.exc import OperationalError
 from app.database import engine, create_db_and_tables
 from app.routers import course,auth
 
+
 app = FastAPI(title="Course Management API",)
 
 

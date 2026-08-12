@@ -3,7 +3,7 @@ from sqlmodel import Session, select
 from app.database import get_session
 from app.models.course import Course
 from app.routers.auth import get_current_user
-from app.seed.run_seed import run_seed
+from app.seed.run_seed import import_courses
 
 router = APIRouter(prefix="/courses",tags=["Courses"])
 
