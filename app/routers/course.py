@@ -14,8 +14,8 @@ def get_courses(session: Session = Depends(get_session)):
     
     if len(course) == 0:
         import_courses()
-        destination =  session.exec(select(Course)).all()
-    return destination
+        course =  session.exec(select(Course)).all()
+    return course
 
 
 # 2. Create course
