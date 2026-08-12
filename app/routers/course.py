@@ -13,7 +13,7 @@ def get_courses(session: Session = Depends(get_session)):
     course =  session.exec(select(Course)).all()
     
     if len(course) == 0:
-        run_seed()
+        import_courses()
         destination =  session.exec(select(Course)).all()
     return destination
 
