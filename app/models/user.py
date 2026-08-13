@@ -5,4 +5,4 @@ class User(SQLModel, table=True):
     id: Optional[int] = Field(default=None,primary_key=True)
     username: str 
     email: str 
-    password: str
+    hashed_password: str
